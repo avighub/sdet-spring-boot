@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public class GreetingController {
     private static final String template = "Hello, %s!";
     private static final String template2 = "Bye, %s!";
+    private static final String template_thank = "Thank you, %s!";
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/greeting")
@@ -20,6 +21,11 @@ public class GreetingController {
     @GetMapping("/bye")
     public Bye bye(@RequestParam(value = "name", defaultValue = "World") String name) {
         return new Bye(counter.incrementAndGet(), String.format(template2, name));
+    }
+
+    @GetMapping("/thank")
+    public Thank thank(@RequestParam(value = "Lname", defaultValue = "LastName") String name) {
+        return new Thank(counter.incrementAndGet(), String.format(template_thank, name));
     }
 
 
