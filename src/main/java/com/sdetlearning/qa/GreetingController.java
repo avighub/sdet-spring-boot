@@ -19,7 +19,9 @@ public class GreetingController {
     }
 
     @GetMapping("/bye")
-    public Bye bye(@RequestParam(value = "name", defaultValue = "and See you all") String name) {
+
+    public Bye bye(@RequestParam(value = "name", defaultValue = "and See you soon!!!") String name) {
+
         return new Bye(counter.incrementAndGet(), String.format(template2, name));
     }
 
